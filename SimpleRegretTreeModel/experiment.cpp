@@ -40,7 +40,7 @@ void experiment::run()
 
 	
 	for(int i = 0; i < nExps; i++){
-		
+		if(i%10 == 0) cout << "Running game: " << i << "                   \r\n" << endl;
 		if(nExps>=10 && i%(nExps/10)==0) cerr << i/(nExps/10)*10 << "% ...";
 		//cerr << "Processing experiment ID: " << i << endl;
 
@@ -66,7 +66,7 @@ void experiment::run()
 			if(realBestMove == t->getNthBestMoveOfAlgorithms(j)) topNaccuracies[j]++;
 		}
 
-		t->dumpAllocationInfoToFile(to_string((long long)typeOfExp)+string("_")+to_string((long long)bf)+string("_")+to_string((long long)depth)+string("_")+to_string((long long)nBudgets));
+		//t->dumpAllocationInfoToFile(to_string((long long)typeOfExp)+string("_")+to_string((long long)bf)+string("_")+to_string((long long)depth)+string("_")+to_string((long long)nBudgets));
 		//cin.get();
 		double max,min;
 		max = 0.0;
@@ -75,6 +75,7 @@ void experiment::run()
 	}
 	cerr << "100% finished" << endl;
 
+	
 
 	double accumulatedAccuracy = 0.0;
 	for(int j = 0; j < bf; j++){

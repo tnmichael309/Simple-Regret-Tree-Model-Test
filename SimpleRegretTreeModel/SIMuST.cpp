@@ -161,7 +161,7 @@ treeNode* SIMuST::stoSelect()
 
 #if isUsePropagate == 0
 			double dGradient = calculateStudentTPDF(dZValue,degreeOfFreedom)/calculateStudentTCDF(dZValue,degreeOfFreedom)/dSquareSumOfTwoDeviations
-				*(-1*sqrt(dSquareSumOfTwoDeviations) - 1/sqrt(dSquareSumOfTwoDeviations)*(vMeans[i] - vMeanOfMeans[i])*dDifferenceOfWinRate/(vMoveCount[i]+1));
+				*(-1*sqrt(dSquareSumOfTwoDeviations) - 1/sqrt(dSquareSumOfTwoDeviations)*(vMeans[i] - vMeanOfMeans[i])*dDifferenceOfWinRate/(vMoveCount[i]*(vMoveCount[i]+1)));
 #else
 			
 			// propagate
@@ -188,7 +188,7 @@ treeNode* SIMuST::stoSelect()
 #if isUsePropagate == 0
 			dGradientOfBestChild += calculateStudentTPDF(dZValue,degreeOfFreedom)/calculateStudentTCDF(dZValue,degreeOfFreedom)/dSquareSumOfTwoDeviations
 				*(sqrt(dSquareSumOfTwoDeviations) 
-				- 1/sqrt(dSquareSumOfTwoDeviations)*(vMeans[maxMeanIndex] - vMeanOfMeans[maxMeanIndex])*dDifferenceOfWinRate/(vMoveCount[maxMeanIndex]+1));
+				- 1/sqrt(dSquareSumOfTwoDeviations)*(vMeans[maxMeanIndex] - vMeanOfMeans[maxMeanIndex])*dDifferenceOfWinRate/(vMoveCount[maxMeanIndex]*(vMoveCount[maxMeanIndex]+1)));
 #else
 			
 			// propagate
